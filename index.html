@@ -10111,7 +10111,8 @@ Bitcoin.Util = {
 		#backText { position: absolute; margin-top: 73px; left: 260px; width: 600px; font-size: 8px; }
 		#backText #backPaperWallet { position: absolute; margin-left: 202px; color: #fb9300; font-size: 16px; text-transform: uppercase; font-style: italic; font-weight: bold;}
 		#backText #backLongText { position: absolute; margin-left: 200px; width: 400px; margin-top: 25px; font-size: 12px;}
-		#backText #backLongText ul { margin: 0 0 0 14px; padding: 0; list-style: square outside none; }
+		#backText #backLongText ul { margin: 0 0 0 14px; padding: 0; list-style: square outside none; list-style-type: "▶ "; }
+		#backText #backLongText li::marker { color: #fb9300; }
 		#backText #backLongText li { margin: 0; padding: 0 0 3px 0; }
 		#backText #backLongText li strong { font-weight: 400; color: red; }
 		
@@ -13416,10 +13417,10 @@ function setDesign (whichDesign, isOnLoad, whichLanguage) {
 			withdraw: "PRIVATE KEY / WITHDRAW",
 			backLongTextFontSize: "12px",
 			backPaperWallet: "BITCOIN PAPER WALLET",
-			backInst1: "<strong>NEVER</strong> deposit additional funds to this paper wallet! Whoever created the wallet has seen the private keys & can empty this wallet at any time!",
-			backInst2: "Verify your balance by searching for the public address using a service such as mempool.space",
-			backInst3: "<strong>Do not reveal the private key</strong> until you are ready to import the balance on this wallet to a bitcoin client, exchange, or online wallet.",
-			backInst4: "When withdrawing your funds from this wallet you should remove the <strong>ENTIRE BALANCE</strong>. If you attempt to spend only some of the funds you will likely lose the remaining bitcoins forever.",
+			backInst1: "When you are ready to <strong>IMMEDIATELY TRANSFER</strong> from this wallet to a bitcoin client, exchange, or online wallet: <strong>PEEL</strong> off all the security stickers & completely <strong>UNFOLD</strong> the wallet to reveal the private key that will let you withdraw.",
+			backInst2: "When withdrawing your funds from this wallet you should remove the <strong>ENTIRE BALANCE</strong>. If you attempt to withdraw only some of the funds you will likely lose the remaining bitcoins forever.",
+			backInst3: "Verify your balance by searching for the <b>public address</b> using a service such as mempool.space",
+			backInst4: "<strong>NEVER</strong> deposit additional funds to this paper wallet.",
 		}
 	};
 	
