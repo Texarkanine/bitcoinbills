@@ -10649,38 +10649,39 @@ Find your scissors! The final step is to cut out your wallet, fold it, and seal 
 				<div id="backTextControl" style="font-size: 12px;">
                    <div style="float: left; width: 375px; text-align: right;">
                   Denomination: 
-                  <select id="backDenominationSelect" onChange="setDenomination(this.value);">
+                  <select id="backDenominationSelect" onFocus="saveDenominationUnit(this.value.split(' ')[1], 'main');" onChange="setDenomination(this.value);">
                     <option value="">*** None ***</option>
                     <option value="10 BTC">10 BTC</option>
                     <option value="5 BTC">5 BTC</option>
                     <option value="2 BTC">2 BTC</option>
                     <option value="1 BTC">1 BTC</option>
-                    <option value="50000 Bits">50000 Bits</option>
-                    <option value="10000 Bits">10000 Bits</option>
-                    <option value="5000 Bits">5000 Bits</option>
-                    <option value="1000 Bits">1000 Bits</option>
-                    <option value="500 Bits">500 Bits</option>
-                    <option value="100 Bits">100 Bits</option>
-                    <option value="50000 mBTC">50000 mBTC</option>
-                    <option value="10000 mBTC">10000 mBTC</option>
-                    <option value="5000 mBTC">5000 mBTC</option>
-                    <option value="1000 mBTC">1000 mBTC</option>
-                    <option value="500 mBTC">500 mBTC</option>
-                    <option value="100 mBTC">100 mBTC</option>
-                    <option value="50 mBTC">50 mBTC</option>
-                    <option value="20 mBTC">20 mBTC</option>
-                    <option value="10 mBTC">10 mBTC</option>
-                    <option value="5 mBTC">5 mBTC</option>
+                    <option value="5 cBTC">5 cBTC</option>
+                    <option value="2 cBTC">2 cBTC</option>
+                    <option value="1 cBTC">1 cBTC</option>
+					<option value="5 mBTC">5 mBTC</option>
+                    <option value="2 mBTC">2 mBTC</option>
                     <option value="1 mBTC">1 mBTC</option>
+					<option value="500 &mu;BTC">500 &mu;BTC</option>
+                    <option value="200 &mu;BTC">200 &mu;BTC</option>
+                    <option value="100 &mu;BTC">100 &mu;BTC</option>
+                    <option value="500 finneys">500 finneys</option>
+                    <option value="200 finneys">200 finneys</option>
+                    <option value="100 finneys">100 finneys</option>
+					<option value="500 satoshis">500 satoshis</option>
+                    <option value="200 satoshis">200 satoshis</option>
+                    <option value="100 satoshis">100 satoshis</option>
                     <option value="other">Other...</option>
                   </select>
                   <div id="backDenominationOther" style="display: none;">
                   <input id="backDenominationOtherAmount" maxlength="5" size="6" value="1" onChange="setDenomination('other');">
-                  <select id="backDenominationOtherUnit" onChange="setDenomination('other');">
+                  <select id="backDenominationOtherUnit" onFocus="saveDenominationUnit(this.value, 'other');" onChange="setDenomination('other');">
                   	<option value="BTC">BTC</option>
+					<option value="cBTC">cBTC</option>
                   	<option value="mBTC">mBTC</option>
                   	<option value="&mu;BTC">&mu;BTC</option>
-                  	<option value="bits">bits</option>
+                  	<option value="bit">bit</option>
+					<option value="finney">finney</option>
+					<option value="satoshi">satoshi</option>
                   </select>
                   </div><!-- end backDenominationOther -->
                               </div>
@@ -13486,21 +13487,124 @@ function setDesign (whichDesign, isOnLoad, whichLanguage) {
 	document.getElementById('langPicker').value = whichLanguage; 
 }
 
+function convertBitcoinUnits(amount, fromUnit, toUnit) {
+
+	const conversionTable = {
+		'BTC': 0,
+		'cBTC': 2,
+		'bitcent': 2,
+		'mBTC': 3,
+		'bit': 6,
+		'bits': 6,
+		'μBTC': 6,
+		'finney': 7,
+		'finneys': 7,
+		'satoshi': 8,
+		'satoshis': 8
+	}
+
+	console.log("Must convert " + amount + " " + fromUnit + " to " + toUnit);
+
+	if (toUnit === fromUnit) {
+		return amount;
+	}
+
+	if( conversionTable.hasOwnProperty(toUnit) && conversionTable.hasOwnProperty(fromUnit) ) {
+
+		const exponentDiff = conversionTable[toUnit] - conversionTable[fromUnit];
+		const numDecimals = countDecimals(amount); // maybe 1.23 BTC = 2 decimals or 0.1234 BCT = 4 decimals
+
+		amount = amount * Math.pow(10, exponentDiff); // convert it
+
+		// if 1.234 BTC, 3 decimals
+		// going to cBTC is 2 exponentDiff.
+		// 123.4 cBTC. Cut decimals to 1 (decimals - exponentDiff)
+
+		// if 1.2 BTC, 1 decimal
+		// going to cBTC is 2 exponentDiff
+		// 1200 cBTC. Cut decimals to -1 (decimals - exponentdiff) except we don't do negative, so do zero
+
+		// if 1234 sats, 0 decimals
+		// going to bits is 12.34, exponentdiff is -2
+		// 12.34 bits, cut decimals to 2 (decimals - exponentdiff)
+
+		// if 1234.56 finney, 2 decimals
+		// going to cBTC is -5 exponentDiff
+		// 0.0123456 cBTC. Cut decimals to 7 (decimals - exponentDiff)
+
+		let desiredAccuracy = numDecimals - exponentDiff;
+		if( desiredAccuracy < 0 ) {
+			desiredAccuracy = 0;
+		}
+
+		amount = amount.toFixed(desiredAccuracy); 
+		amount = parseFloat(amount); // strip trailing zeroes
+		return amount;
+
+	} else {
+		return undefined;
+	}
+}
+
+const pluralizable = [
+	'bit',
+	'satoshi',
+	'finney'
+]
+
+var prevUnitData = {
+	'main': null,
+	'other': null
+}
+function saveDenominationUnit(unit, track='main') {
+	prevUnitData[track]=unit;
+}
+
+function countDecimals (value) {
+	if(Math.floor(value) === value) return 0;
+	return value.toString().split(".")[1].length || 0;
+}
+
 function setDenomination(valueAndUnit) {
 	if (!valueAndUnit) {
+
 		document.getElementById('backSeal').style.display = 'none';
 		document.getElementById('backDenominationOther').style.display = 'none';
+
 	} else if (valueAndUnit == 'other') {
+
+		const origAmount = parseFloat(document.getElementById('backDenominationOtherAmount').value);
+		const newUnit = document.getElementById('backDenominationOtherUnit').value;
+
+		let amount = convertBitcoinUnits(origAmount, prevUnitData['other'], newUnit);
+		if ( isNaN(amount) ) {
+			amount = origAmount;
+		}
+
+		if (amount < 1e-6 ) {
+			amount = 0.000001;
+		}
+
 		document.getElementById('backDenominationOther').style.display = 'block';
 		document.getElementById('backSeal').style.display = 'block';
-		document.getElementById('backSealBig').innerHTML = document.getElementById('backDenominationOtherAmount').value;
-		document.getElementById('backSealSmall').innerHTML = document.getElementById('backDenominationOtherUnit').value;
+		document.getElementById('backSealBig').innerHTML = amount;
+		document.getElementById('backDenominationOtherAmount').value = amount;
+		document.getElementById('backSealSmall').innerHTML = newUnit + (pluralizable.includes(newUnit) && amount !== 1 ? 's' : '');
+
+		saveDenominationUnit(newUnit, 'other');
+		
 	} else {
+
 		denominationParts = valueAndUnit.split(' ');
+		const origAmount = parseFloat(denominationParts[0]);
+		const newUnit = denominationParts[1];
+
 		document.getElementById('backSeal').style.display = 'block';
 		document.getElementById('backSealBig').innerHTML = denominationParts[0];
-		document.getElementById('backSealSmall').innerHTML = denominationParts[1];
+		document.getElementById('backSealSmall').innerHTML = newUnit;
 		document.getElementById('backDenominationOther').style.display = 'none'
+
+		saveDenominationUnit(newUnit, 'main');
 	}
 }
 
