@@ -1,10 +1,9 @@
 Bitcoin Bills
 =====
 
-A fork of [Canton Becker's Bitcoin Paper Wallet](https://github.com/cantonbecker/bitcoinpaperwallet)
+A fork of [Canton Becker's Bitcoin Paper Wallet](https://github.com/cantonbecker/bitcoinpaperwallet) to help you make physical Bitcion Bills to give out to people.
 
-Tunes & updates the original, safe generator (pre April 2018) specifically for "Bitcoin Bills:"
-paper wallets that will be pre-generated in fixed quantities & given away at unknown future dates to unknown parties.
+Tunes & updates the original, safe generator (pre April 2018):
 
 1. Removes coins other than Bitcoin
 2. Removes references & links to bitcoinpaperwallet[.]com
