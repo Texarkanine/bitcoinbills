@@ -92,20 +92,6 @@ function setCryptoCurrency(toThis) {
 	  window.WIFPrefix = '5';
 	  window.compressedWIFPrefix = '[LK]';
 	  break;
-	case 'Litecoin':
-		window.networkVersion = 0x30;
-		window.privateKeyPrefix = 0xb0;
-		window.WIFPrefix = '6';
-		window.compressedWIFPrefix = 'T';
-		document.title = 'Litecoin paper wallet generator';
-		break;
-	case 'Dogecoin':
-		window.networkVersion = 0x1e;
-		window.privateKeyPrefix = 0x9e;
-		window.WIFPrefix = '6';
-		window.compressedWIFPrefix = 'Q';	
-		document.title = 'Dogecoin paper wallet generator. Wow! Many coin. Such shiny.';
-		break;
 	case 'Testnet':
 		window.networkVersion = 0x6F;
 		window.privateKeyPrefix = 0xEF;
@@ -10384,7 +10370,7 @@ Bitcoin.Util = {
               <span><a href="?culture=fr" id="culturefr">Français</a></span> -->
               &nbsp;
           	</div>
-			<div id="tagline">Open Source JavaScript <script type="text/javascript">document.write(window.currencyName);</script> Paper Wallet Generator <span>Updated Sep 22, 2017</span></div>
+			<div id="tagline">Open Source JavaScript <script type="text/javascript">document.write(window.currencyName);</script> Bill Generator <span>Updated Sep 22, 2017</span></div>
             <div id="tagwarning"></div>
 			<div id="seedpoolarea"><textarea rows="16" cols="62" id="seedpool"></textarea></div>
         
@@ -13416,11 +13402,11 @@ function setDesign (whichDesign, isOnLoad, whichLanguage) {
 			walletImportFormat: "WALLET IMPORT FORMAT",
 			withdraw: "PRIVATE KEY / WITHDRAW",
 			backLongTextFontSize: "12px",
-			backPaperWallet: "BITCOIN PAPER WALLET",
+			backPaperWallet: "BITCOIN BILL",
 			backInst1: "Verify your balance by searching for the <b>public address</b> using a service such as mempool.space",
-			backInst2: "When you are ready to <strong>IMMEDIATELY TRANSFER</strong> from this wallet to a bitcoin client, exchange, or online wallet: <strong>PEEL</strong> off all the security stickers & completely <strong>UNFOLD</strong> the wallet to reveal the private key that will let you withdraw.",
-			backInst3: "When withdrawing your funds from this wallet you should remove the <strong>ENTIRE BALANCE</strong>. If you attempt to withdraw only some of the funds you will likely lose the remaining bitcoins forever.",			
-			backInst4: "<strong>NEVER</strong> deposit additional funds to this paper wallet.",
+			backInst2: "When you are ready to <strong>IMMEDIATELY TRANSFER</strong> from this bill to a bitcoin client, exchange, or online wallet: <strong>PEEL</strong> off all the security stickers & completely <strong>UNFOLD</strong> the bill to reveal the private key that will let you withdraw.",
+			backInst3: "When withdrawing your funds from this bill you should remove the <strong>ENTIRE BALANCE</strong>. If you attempt to withdraw only some of the funds you will likely lose the remaining bitcoins forever.",			
+			backInst4: "<strong>NEVER</strong> deposit additional funds to this bill.",
 		}
 	};
 	
