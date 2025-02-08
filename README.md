@@ -19,7 +19,7 @@ DO NOT USE Online Wallet Generators
 From the original, trusted author:
 --------------------------------------------
 
-
+```
 *********************************************************
 ***  DO NOT USE THE WEBSITE BITCOINPAPERWALLET[.]COM  ***
 *********************************************************
@@ -58,6 +58,6 @@ IzFlUJwd1uT6hiT9lMiZ5AwBYUH5wmNSat4dK6qfh+3hu65A3Ex0/EcOFOqRBPBH
 xA9RXpfGJvFOZ4yoUTa3+qWt6krQbQ==
 =28VT
 -----END PGP SIGNATURE-----
-
+```
 
 -- https://github.com/cantonbecker/bitcoinpaperwallet/blob/6887678900e0f022b2388721b423e5566184274d/README
