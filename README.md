@@ -10,6 +10,15 @@ paper wallets that will be pre-generated in fixed quantities & given away at unk
 2. Removes references & links to bitcoinpaperwallet[.]com
 3. Adds cautionary text around how to use paper wallets (only sweep - never deposit!)
 
+User Guide
+=====
+
+1. Clone this repository
+2. Open `index.html`
+3. Follow the on-screen instructions
+
+You may take additional precuations such as moving the cloned repository to an offline computer, if you wish.
+
 DO NOT USE Online Wallet Generators
 =====
 
