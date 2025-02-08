@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: "Receive Key"
         run: |
-          gpg --recv-key B06A5436
+          gpg --recv-key 7AB9B479B06A5436
       - name: "Verify index.html.sig"
         run: |
           gpg --verify --with-fingerprint index.html.sig index.html
