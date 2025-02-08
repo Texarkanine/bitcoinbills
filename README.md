@@ -12,7 +12,7 @@ DO NOT USE Online Wallet Generators
 =====
 
 * BITCOINPAPERWALLET[.]COM is a scam that steals your bitcoin.
-* BITCOINPAPERWALLER[.]IO is a scam that steals yout bitcoin.
+* BITCOINPAPERWALLER[.]IO is a scam that steals your bitcoin.
 
 From the original, trusted author:
 
