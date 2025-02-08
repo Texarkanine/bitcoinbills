@@ -1,10 +1,11 @@
 <!doctype html>
 <html>
 <head>
-	<title>Bitcoin Paper Wallet Generator</title>
+	<title>Bitcoin Bill Generator</title>
 	<!--
     
-    generate-wallet.html (from https://github.com/cantonbecker/bitcoinpaperwallet)
+    index.html (from https://github.com/Texarkanine/bitcoinbills) forked from
+	generate-wallet.html (from https://github.com/cantonbecker/bitcoinpaperwallet)
     
     Contact: Canton Becker / canton@gmail.com / https://www.cantonbecker.com
     
@@ -97,7 +98,7 @@ function setCryptoCurrency(toThis) {
 		window.privateKeyPrefix = 0xEF;
 		window.WIFPrefix = '9';
 		window.compressedWIFPrefix = 'c';
-		document.title = 'Bitcoin TESTNET paper wallet generator';
+		document.title = 'Bitcoin TESTNET bill generator';
 		break;
 	default:
 	  alert ('Invalid cryptocurrency "' + toThis + '" at initialization. Defaulting to Bitcoin.');
@@ -10487,16 +10488,16 @@ Bitcoin.Util = {
                           </select>
                         </p>
                         <strong>Step 1: Calibrate Printer</strong><br>
-Before printing out a wallet you may need to calibrate your output using the <em>zoom</em> and <em>horizontal&nbsp;shift</em> adjustments to account for your particular browser and printer combination. Otherwise, your wallet's back side may not line up with the front side.</span> <br>
+Before printing out a bill you may need to calibrate your output using the <em>zoom</em> and <em>horizontal&nbsp;shift</em> adjustments to account for your particular browser and printer combination. Otherwise, your bill's back side may not line up with the front side.</span> <br>
 <br>
 <span id="instructions3"><strong>Step 2: Print Front</strong><br>
-Next you will print out the front side of your wallet. The public address and private key will be random-generated, <em>or</em> you can supply your own key by rolling dice, shuffling cards, etc. You may also duplicate an existing paper wallet or provide a "vanity" address if you have one. Tip: If you are printing several wallets, it's possible to print two per page.</span> <br>
+Next you will print out the front side of your bill. The public address and private key will be random-generated, <em>or</em> you can supply your own key by rolling dice, shuffling cards, etc. You may also duplicate an existing bill or provide a "vanity" address if you have one. Tip: If you are printing several bills, it's possible to print two per page.</span> <br>
 <br>
 <span id="instructions4"><strong>Step 3: Print Back</strong><br>
 Flip the front page over and put it back in your printer. This isn't just for good looks! The reverse design includes important tamper-resistant safeguards.</span> <br>
 <br>
 <span id="instructions5"><strong>Step 4: Cut, Fold, Seal &amp; Fund</strong><br>
-Find your scissors! The final step is to cut out your wallet, fold it, and seal it  with tamper-evident hologram stickers or at least opaque (light-blocking) tape. Now you're ready to transfer funds from your online holdings to your new wallet.</span> <br>
+Find your scissors! The final step is to cut out your bill, fold it, and seal it  with tamper-evident hologram stickers or at least opaque (light-blocking) tape. Now you're ready to transfer funds from your online holdings to your new bill.</span> <br>
 <br>
 
 
@@ -10547,7 +10548,7 @@ Find your scissors! The final step is to cut out your wallet, fold it, and seal 
 
                 <div id="selfinfo" style="display: none; position: absolute; top: 15px;">
 
-                   <b class="helpTitle">If you are making a paper wallet for a <a href="https://en.bitcoin.it/wiki/Vanitygen" target="_blank">vanity address</a>, or duplicating an existing paper wallet:</b>
+                   <b class="helpTitle">If you are making a bill for a <a href="https://en.bitcoin.it/wiki/Vanitygen" target="_blank">vanity address</a>, or duplicating an existing bill:</b>
                    <br />
                    <br />
                    In this case, simply enter your private key in Wallet Import Format (or scan it using the "validate" feature on this web page.) WIF keys always begin with the number 5 and look something like this: '5JnwJNC7q3...' <em>The public address, e.g. '1vanityABC456...' is automatically calculated using the private key, so you only need to provide the private key.</em>
@@ -10564,12 +10565,12 @@ Find your scissors! The final step is to cut out your wallet, fold it, and seal 
 
                    <div class="helpDivider"></div>
 
-                   <b class="helpTitle">If you want to make a paper wallet which can <em>also</em> be accessed using a passphrase (AKA a "brain wallet"):</b>
+                   <b class="helpTitle">If you want to make a bill which can <em>also</em> be accessed using a passphrase (AKA a "brain wallet"):</b>
                    <br />
                    <br />
                    You can make a so-called "brain wallet" by supplying a VERY secure passphrase like '1852 Adobe Cloud SMASH fuzzy steamzonk'. <em>Be extremely careful doing this because a wallet generated using an insecure passphrase is virtually guaranteed to have its balance stolen!</em>.
                    <br />
-                   <br />The resulting paper wallet will still have an ordinary crypto-looking private key and public address, but you will <em>also</em> be able to retrieve your wallet contents by entering your passphrase into the 'verify' tab of this service or a similar service.<br /><br />
+                   <br />The resulting bill will still have an ordinary crypto-looking private key and public address, but you will <em>also</em> be able to retrieve your wallet contents by entering your passphrase into the 'verify' tab of this service or a similar service.<br /><br />
                     <strong>Note:</strong> supplying a brain wallet passphrase is different from BIP38-encrypting your wallet with a passphrase.
 				   <br />
                    <br />
@@ -10600,11 +10601,11 @@ Find your scissors! The final step is to cut out your wallet, fold it, and seal 
 						<div class="background"></div>
 						<div class="dialog instructionsarea">
 							<h2>About "BIP38" Encryption</h2>
-							<p>The advantage with BIP38 is that if your paper wallet is stolen or compromised, the private key cannot be recovered without your password. <em>Even a very short password adds a strong degree of protection</em>. However, if you encrypt your private key with BIP38 and you lose your password, it will be impossible for you to recover the funds you have sent to this wallet.</p>
+							<p>The advantage with BIP38 is that if your bill is stolen or compromised, the private key cannot be recovered without your password. <em>Even a very short password adds a strong degree of protection</em>. However, if you encrypt your private key with BIP38 and you lose your password, it will be impossible for you to recover the funds you have sent to this wallet.</p>
                             <p>Also, note that not all <script type="text/javascript">document.write(window.currencyName);</script> wallet applications or web services are able to import or "sweep" BIP38 encrypted keys. In this case, you will have to use the <strong>Validate or Decrypt</strong> feature on this webpage to reveal the unencrypted Wallet Import Format (WIF) key as an intermediate step before sweeping the balance.</p>
                             
                             <p style="color: red;">WARNING: Before sending any funds to a BIP38-encrypted wallet, first do a test make sure you are able to decrypt the printed private key back to ordinary WIF format.</p>
-							<p>Unless you have a strong understanding of the BIP38 encryption and decryption workflow, <strong>click cancel</strong>, print your paper wallet without BIP38, and just keep it safe and hidden like you would jewels or cash.
+							<p>Unless you have a strong understanding of the BIP38 encryption and decryption workflow, <strong>click cancel</strong>, print your bill without BIP38, and just keep it safe and hidden like you would jewels or cash.
 							</p>
 							<p>
 								<button id="paperbip38activate" disabled onClick="ninja.wallets.paperwallet.toggleEncryptSettings(false);">TURN ON BIP38 ENCRYPTION</button>
@@ -10779,7 +10780,7 @@ Find your scissors! The final step is to cut out your wallet, fold it, and seal 
 					<div style="width: 45%; float: left; padding: 0 15px; border-right: 3px solid #ccc;">
                     	<p><em>This feature works for private keys made here as well as those generated using any other Bitcoin service or software, e.g. bitaddress.org or brainwallet.org</em></p>
 						<p><strong>Enter or <a onClick="ninja.wallets.detailwallet.qrscanner.start()">scan</a> any private key to verify that the key is valid</strong> and show its corresponding public key. If your private key validates, then you may be reassured that you will able to retrieve any funds sent to that wallet.</p>
-						<p><strong>To duplicate or BIP38-encrypt any paper wallet</strong>, just validate its private key and click the "Use these details to print a paper wallet" button.</p>
+						<p><strong>To duplicate or BIP38-encrypt any bill</strong>, just validate its private key and click the "Use these details to print a bill" button.</p>
  						<p><strong>Is your wallet BIP38 encrypted?</strong> If so, you can use this form to decrypt your private key and recover the standard Wallet Import Format (WIF) key suitable for wallet software and services that don't directly support BIP38 importing.</p>
                         <p><strong>You may also type in a "brain wallet" passphrase</strong> to see the corresponding SHA256 hashed keys.</p>
 					</div>
@@ -10820,7 +10821,7 @@ Find your scissors! The final step is to cut out your wallet, fold it, and seal 
 				<div id="detailkeyarea" class="hide">
 					<div class="notes">
 						<h1>Public and private details for:<br /><span id="detailkeyareakey"></span></h1>
-						<p><button onClick="ninja.wallets.detailwallet.loadInPaperWallet()">Use these details to print a paper wallet</button></p>
+						<p><button onClick="ninja.wallets.detailwallet.loadInPaperWallet()">Use these details to print a bill</button></p>
 						<span id="detaillabelnote1">Use the <strong>Public Address</strong> to receive funds or check your balance online. The <strong>Private Key WIF</strong> is a code that needs to be keep secret since it can be used to spend any funds that have been sent to the corresponding public key. Keys can be encoded in a number of different formats. The most popular encoding formats (WIF, WIFC, HEX, B64) are shown below.</span>
 						<br />
 					</div>
@@ -10897,7 +10898,7 @@ Find your scissors! The final step is to cut out your wallet, fold it, and seal 
             
                 <div id="siginfo" style="display: none; position: absolute; top: -300px;">
 					<!-- TODO: when all done, sign the updated generate-wallet.html & update this footer -->
-                    After downloading and extracting the <a href="https://github.com/cantonbecker/bitcoinpaperwallet" target="_blank">ZIP package</a> for this generator, you should find a file named <b>generate-wallet.html.sig</b> 
+                    After downloading and extracting the <a href="https://github.com/Texarkanine/bitcoinbills/releases" target="_blank">ZIP package</a> for this generator, you should find a file named <b>generate-wallet.html.sig</b> 
                     which you can use to:
                     <ol><li> verify that <strong>generate-wallet.html</strong> hasn't been tampered with, and</li>
                     <li>get proof that it really was authored by Canton Becker (canton@gmail.com) whose public key and fingerprint can be confirmed at <a href="https://cantonbecker.com/webdesign/contact">cantonbecker.com</a>, bitcointalk.org, etc.</li>
@@ -10915,7 +10916,7 @@ Find your scissors! The final step is to cut out your wallet, fold it, and seal 
 
             	<span class="item"><b>Security &amp; signatures</b></span>
                 <span class="item" style="font-size: 90%;">For secure wallet generation, do not print wallets "live" from any website.<br />Instead, download this generator from GitHub and run the HTML as a "local" file:</span>
-				<span class="item"><a href="https://github.com/cantonbecker/bitcoinpaperwallet" target="_blank" id="footerlabelgithub"><strong>Secure Download</strong> (GitHub ZIP file)</a></span>
+				<span class="item"><a href="https://github.com/Texarkanine/bitcoinbills/releases" target="_blank" id="footerlabelgithub"><strong>Secure Download</strong> (GitHub ZIP file)</a></span>
                 
 				<span class="item" id="footerlabelsig" style="font-size: 90%;"><a href="#" onClick="document.getElementById('siginfo').style.display='block'; return(false);">Validate PGP/GPG signature</a></span>
 
@@ -10924,7 +10925,7 @@ Find your scissors! The final step is to cut out your wallet, fold it, and seal 
 			</div>
 			<div class="copyright">
 				<span id="footerlabelcopyright1">&copy; The folding wallet design and tamper-evident seals are Copyright 2016 by Canton Becker.</span>
-				<span id="footerlabelcopyright2">This software may be modified and redistributed as per the MIT/GPL/BSD/Apache licenses described in the HTML source code. However, the folding paper wallet design itself may not be modified or redistributed for commercial purposes without permission.</span><br />
+				<span id="footerlabelcopyright2">This software may be modified and redistributed as per the MIT/GPL/BSD/Apache licenses described in the HTML source code. However, the folding bill design itself may not be modified or redistributed for commercial purposes without permission.</span><br />
 				<span id="footerlabelnowarranty"><strong>This software and service is provided with no warranty. Use at your own risk.</strong></span>
 
 			</div>
