@@ -1,0 +1,22 @@
+name: "GPG: Verify"
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  gpg-verify:
+    name: "index.html signature"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "🔑 Receive Key"
+        run: |
+          gpg --recv-key 7AB9B479B06A5436
+      
+      - name: "☁️ Checkout"
+        uses: actions/checkout@v4
+        
+      - name: "🧪 Verify index.html.sig"
+        run: |
+          gpg --verify --with-fingerprint index.html.sig index.html
