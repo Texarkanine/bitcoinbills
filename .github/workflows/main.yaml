@@ -36,6 +36,10 @@ jobs:
       - name: "☁️ Checkout"
         uses: actions/checkout@v4
         
+      - name: "🧪 Verify commit signature"
+        run: |
+          git verify-commit --verbose HEAD
+
       - name: "🧪 Verify index.html.sig"
         run: |
           gpg --verify --with-fingerprint index.html.sig index.html
