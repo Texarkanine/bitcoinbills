@@ -35,14 +35,18 @@ jobs:
       
       - name: "☁️ Checkout"
         uses: actions/checkout@v4
-        
-      - name: "🧪 Verify commit signature"
-        run: |
-          git verify-commit --verbose HEAD
 
       - name: "🧪 Verify index.html.sig"
         run: |
           gpg --verify --with-fingerprint index.html.sig index.html
+
+      - name: "🔑 Receive GitHub Key"
+        run: |
+          gpg --recv-key B5690EEEBB952194
+        
+      - name: "🧪 Verify commit signature"
+        run: |
+          git verify-commit --verbose HEAD
       
       - name: "🔧 Setup Pages"
         uses: actions/configure-pages@v5
