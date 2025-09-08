@@ -1,6 +1,8 @@
 Bitcoin Bills
 =====
 
+![Bitcoin Bill - folded, front & back](images/finished-sample-default.jpg)
+
 A fork of [Canton Becker's Bitcoin Paper Wallet](https://github.com/cantonbecker/bitcoinpaperwallet) to help you make physical Bitcion Bills to give out to people.
 
 Tunes & updates the original, safe generator (pre April 2018):
