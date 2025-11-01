@@ -9933,6 +9933,7 @@ Bitcoin.Util = {
 		.pubkeyhex { word-wrap: break-word; }
 		.faqs ol { padding: 0 0 0 25px; }
 		.faqs li { padding: 3px 0; }
+		.notes ol, .notes ul { padding-left: 25px; list-style-position: inside; }
 		body { margin-top: 0; font-family: Arial; background-image:url(images/webpage-background.png); background-repeat: repeat-y; background-position: center; background-color: #e2f9bd; font-size: 14px;}
 		
 		h1 { font-size: 24px; font-weight: 100; color: #090; margin:0 0 10px 0; padding:0; }
@@ -10100,7 +10101,7 @@ Bitcoin.Util = {
 		/* Back side */
 		#backText { position: absolute; margin-top: 73px; left: 260px; width: 600px; font-size: 8px; }
 		#backText #backPaperWallet { position: absolute; margin-left: 202px; color: #fb9300; font-size: 16px; text-transform: uppercase; font-style: italic; font-weight: bold;}
-		#backText #backLongText { position: absolute; margin-left: 200px; width: 400px; margin-top: 25px; font-size: 12px;}
+		#backText #backLongText { position: absolute; margin-left: 200px; width: 400px; margin-top: 20px; font-size: 12px;}
 		#backText #backLongText ul { margin: 0 0 0 14px; padding: 0; list-style: square outside none; list-style-type: "▶ "; }
 		#backText #backLongText li::marker { color: #fb9300; }
 		#backText #backLongText li { margin: 0; padding: 0 0 3px 0; }
@@ -10165,7 +10166,7 @@ Bitcoin.Util = {
 
 		.instructionsarea { padding: 0 25px; }
 		.instructionsarea { font-size: 12px; line-height: 18px; }
-		.instructionsarea li { padding-bottom: 8px; list-style: none; }
+		.instructionsarea li { padding-bottom: 8px;  }
 		
 		.highlighted { font-size: 14px; padding: 8px; background-color: #ebfdbf;}
 		
@@ -10374,7 +10375,7 @@ Bitcoin.Util = {
               <span><a href="?culture=fr" id="culturefr">Français</a></span> -->
               &nbsp;
           	</div>
-			<div id="tagline">Open Source JavaScript <script type="text/javascript">document.write(window.currencyName);</script> Bill Generator <span>Updated Sep 22, 2017</span></div>
+			<div id="tagline">Open Source JavaScript <script type="text/javascript">document.write(window.currencyName);</script> Bill Generator <span>Updated Nov 01, 2025</span></div>
             <div id="tagwarning"></div>
 			<div id="seedpoolarea"><textarea rows="16" cols="62" id="seedpool"></textarea></div>
         
@@ -10475,11 +10476,14 @@ Bitcoin.Util = {
 						<span id="instructions2">
                         <p style="margin-top: 0;"><strong>Change your wallet's design, language, or cryptocurrency here:</strong>
                           <select name="designPicker" id="designPicker" style="font-size: 12px;" onChange="setDesign(this.value, false);">
-                            <option value="bbill_gray">Bitcion Bill - Gray</option>
+                            <option value="bbill_gray">Bitcoin Bill - Gray</option>
 							<option value="default" selected>Bitcoin Bill - Green</option>
+							<option value="bbill_greenvivid">Bitcoin Bill - Vivid Green</option>
 							<option value="bbill_blue">Bitcoin Bill - Blue</option>
-							<option value="bbill_purple">Bitcion Bill - Purple</option>
-							<option value="bbill_red">Bitcion Bill - Red</option>
+							<option value="bbill_bluevivid">Bitcoin Bill - Vivid Blue</option>
+							<option value="bbill_purple">Bitcoin Bill - Purple</option>
+							<option value="bbill_orange">Bitcoin Bill - Orange</option>
+							<option value="bbill_red">Bitcoin Bill - Red</option>
                             <option value="blackwhite">Black &amp; White Bitcoin</option>
                             <option value="holiday">Holiday / Christmas Bitcoin (English)</option>
                             <option value="custom">Your own custom Bitcoin design</option>
@@ -10707,11 +10711,7 @@ Find your scissors! The final step is to cut out your bill, fold it, and seal it
                         <textarea id="backCustomMessageEntry" placeholder="Enter message here" onChange="document.getElementById('backCustomMessageContent').innerHTML=this.value.replace(/(?:\r\n|\r|\n)/g, '<br />');"></textarea>
                     </div>
                     <div id="backLongText">
-                      <ul>
-                          <li id="backInst1"></li>
-                          <li id="backInst2"></li>
-                          <li id="backInst3"></li>
-                          <li id="backInst4"></li>
+                      <ul id="backInstructionsList">
                       </ul>
                   </div><!-- end backLongText -->
                 </div><!-- end backText -->
@@ -10725,50 +10725,86 @@ Find your scissors! The final step is to cut out your bill, fold it, and seal it
 
 			<div id="foldarea" class="walletarea">	
 				<div id="foldcommands" class="commands">
-					&nbsp;
 				</div>
 				<div class="instructionsarea">
-					  <h1><span id="instructions21">How to cut &amp; fold your 2-sided wallet:</span></h1>
 					<div class="notes">
 
-                        <div style="float: right; margin: 0 0 20px 30px; padding-left: 30px; border-left: 4px solid #eee;">
-                         <img src="images/finished-folds.png" width="355" height="144" alt="Folding Diagram"><br /><br />
-                         <img src="images/finished-sample.jpg" width="400" height="203" alt="Sample Wallet"><br /><br />
-                         <img src="images/finished-sample-bagged.jpg" width="400" height="203" alt="Sealed Wallet">
+						<div style="float: left; width: 410px; margin: 0 30px 20px 0; padding-right: 30px; border-right: 4px solid #eee;">
+							<h1><span id="instructions21">Assembly</span></h1>
+							<h2>Step 1: Cut out the bill</h2>
+							<span>Cut out your bill <em>using the front side as a guide, not the back!</em>
+							The design on the reverse side is intentionally larger than the front side so that back design will "bleed" to the edges even if your front and back sides are somewhat misaligned.
+							<br><br>
+							</span>
+							<img src="images/instructions01.jpg" alt="Instructions 01"><br /><br />
+							<h2>Step 2: Fold &amp; crease the private key tab</h2>
+							<img src="images/instructions02.jpg" alt="Instructions 02"><br /><br />
+							<h2>Step 3</h2>
+							<h3>Fold the private key tab under</h3>
+							<img src="images/instructions03_1.jpg" alt="Instructions 03-1"><br /><br />
+							<h3>Press from the edge towards the pubkey &amp; crease</h3>
+							<img src="images/instructions03_2.jpg" alt="Instructions 03-2"><br /><br />
+							<h3>Snip tips off wings</h3>
+							<img src="images/instructions03_3.jpg" alt="Instructions 03-3"><br /><br />
+							<h2>Step 4: Apply 5cm x 1cm security sticker</h2>
+							<img src="images/instructions04.jpg" alt="Instructions 04"><br /><br />
+							<h2>Step 5: Apply 2.5&quot; x 0.5&quot; security sticker</h2>
+							<h3>Align edge w/ orange border &amp; lay down towards far edge</h3>
+							<img src="images/instructions05_1.jpg" alt="Instructions 05-1"><br /><br />
+							<h3>Should have a small tab hanging over the edge</h3>
+							<img src="images/instructions05_2.jpg" alt="Instructions 05-2"><br /><br />
+							<h3>Fold tab over the back</h3>
+							<img src="images/instructions05_3.jpg" alt="Instructions 05-3"><br /><br />
+							<h2>Step 6: Done!</h2>
+							<img src="images/instructions06.jpg" alt="Instructions 06">
 						</div>
 
-						<span id="instructions22">Cut out your wallet <em>using the front side as a guide, not the back!</em>
-                       
-                        The design on the reverse side is intentionally larger than the front side so that back design will "bleed" to the edges even if your front and back sides are somewhat misaligned.
-                        <br /><br />
-                        Now fold the more narrow private key area in half, and then over again as indicated by the dotted lines in this diagram. The "butterfly" shape is time-consuming to cut out, but <em>without all those cuts and angles, someone can reveal your private key without removing the tape</em>!</span>
-                        <br />
-						<br />
-						<span id="instructions23">The final wallet will be a rectangle shape with the more narrow private key area folded over it.</span>
-						<br />
-                                                
-                        <br />
-						<span id="instructions13">Seal your wallet by placing two strips of sturdy <strong>light-blocking</strong> tape over the top and bottom edges of the private (folded) area. A zip-seal bag will keep it safe from moisture, which is especially important when using an inkjet printer.</span>
-
-						<br /><br />	
-
-						<h1><span id="instructions16">How to add funds to your wallet:</span></h1>
-
-						<span id="instructions17">Send <script type="text/javascript">document.write(window.currencyName);</script>s to the address (or QR code) where your wallet says "PUBLIC ADDRESS".</span>
-						<br /><br />	
-                        
-						<h1><span id="instructions18">How to withdraw funds from your wallet:</span></h1>
-
-						<span id="instructions19">You should expect to withdraw the entire balance of the wallet by importing it (or "sweeping" it) to a live wallet, e.g. a Bitcoin wallet application or online service like kraken.com or coinbase.com.
-                        <br />
-                        <br />
-                        <strong>If you elected to BIP38-encrypt your wallet</strong>, you may need to recover your unencrypted WIF "Wallet Import Format" private key by using the "validate" tab on this web page.
-                        <br />
-                        <br />
-						<h1><span id="instructions20">Tips &amp; FAQ's</span></h1>
-                        
-                        </span>
-                        
+						<h1>Tips & Tricks</h1>
+						<h2>Tools & Materials</h2>
+						<span>
+							<ol>
+								<li>Scissors</li>
+								<li>(optional) paper cutter, especially if making many bills</li>
+								<li>1x 5cm x 1cm security sticker (<a href="https://www.amazon.com/dp/B0D1C2TVRM" target="_blank">Example on Amazon</a>)</li>
+								<li>2x 2.5" x 0.5" security stickers (<a href="https://www.amazon.com/dp/B09PL3G5XG" target="_blank">Example on Amazon</a>)</li>
+							</ol>
+						</span>
+						<h2>Printer Choice</h2>
+						<span>
+							If you print with an inkjet printer, the private key can be damaged by water or other liquids. Consider storing it in a waterproof bag or other container.
+							<br><br>
+							If you print with a laser (or equivalent printer), your image will be waterproof!
+							However, you may have less-accurate color reproduction than with an inkjet printer.
+							You may need to dive into your printer's color settings to get a decent-looking result.
+						</span>
+						<h2>Paper Choice</h2>
+						<span>
+							If you print with a laser (or equivalent) printer, you have the option of using synthetic "papers" to create water and tear-resistant bills.
+							These papers can be more challenging to cut & fold. If using a thick synthetic paper, consider using a rolling pin or equivalent round, smooth surface to roll over creases and really flatten them.
+							This will help prevent the paper from lifting the security stickers off on its own!
+						</span>
+						<span>
+							Two synthetic papers that I've found work well are:
+							<ul>
+								<li><b>Koala Matte Double-Sided Printable White Film</b>: Thick, waterproof, tear-resistant, crease-resistant w/ a plastic feel. Laser printer required. (<a href="https://www.koalagp.com/products/koala-matte-double-sided-printable-film-for-laser-printers-25-sheets-8-5-x-11-tear-resistant-perfect-for-professional-menus-signage-retail-displays" target="_blank">koalagp.com</a>)</li>
+								<li><b>ReSkid Tear-Resistant Paper</b>: Normal thickness, plastic-core paper w/ traditional paper feel. Inkjet-compatible. If printed with laser, tolerates some moisture. (<a href="https://reskid.com/products/reskid-tear-resistant-paper-8-5x11in-100-sheets-printable-like-paper" target="_blank">reskid.com</a>)</li>
+							</ul>
+						</span>
+						<h2>Durability</h2>
+						<span>
+							While printing on synthetic papers with a laser printercan make the bills and their images reasonably-durable, the security stickers' adhesives are, in my experience, the weakest link.
+							Consider pressing the bills under a stack of books or other weight for a while before use to ensure the stickers adhere securely.
+						</span>
+						<h2>Adding Funds to your Wallet</h2>
+						<span>
+						Send Bitcoin to the address (or QR code) where your wallet says "PUBLIC ADDRESS".
+						</span>
+						<h2>Withdrawing Funds from your Wallet</h2>
+						<span>
+						You should expect to withdraw the entire balance of the wallet by importing it (or "sweeping" it) to a live wallet, e.g. a Bitcoin wallet application or online service like kraken.com or coinbase.com.
+						<br><br>
+						If you elected to BIP38-encrypt your wallet, you may need to recover your unencrypted WIF "Wallet Import Format" private key by using the "validate" tab on this web page.
+					</span>
 					</div>
 				</div>
 			</div><!-- end landarea -->
@@ -11915,12 +11951,34 @@ ninja.publicKey = {
 					textShadow: "white",
 					textPointer: "white",
 				},				
+				'bbill_gray': {
+					publicUpper: "#fff57c",
+					publicLower: "#f7931a",
+					privateLeft: "#989c99",
+					privateRight: "#e6e6e6",
+					pointer: "#666666",
+					guilloche: "white",
+					text: "#1937a9",
+					textShadow: "white",
+					textPointer: "white",
+				},
 				'default': {
 					publicUpper: "#fff57c",
 					publicLower: "#f7931a",
 					privateLeft: "#8cd96f",			
 					privateRight: "#fff67d",
 					pointer: "#02ab5c",
+					guilloche: "white",
+					text: "#1937a9",
+					textShadow: "white",
+					textPointer: "white",
+				},
+				'bbill_greenvivid': {
+					publicUpper: "#fff57c",
+					publicLower: "#f7931a",
+					privateLeft: "#00cc66",
+					privateRight: "#fff67d",
+					pointer: "#00aa55",
 					guilloche: "white",
 					text: "#1937a9",
 					textShadow: "white",
@@ -11937,6 +11995,17 @@ ninja.publicKey = {
 					textShadow: "white",
 					textPointer: "white",
 				},
+				'bbill_bluevivid': {
+					publicUpper: "#fff57c",
+					publicLower: "#f7931a",
+					privateLeft: "#0066ff",
+					privateRight: "#fff67d",
+					pointer: "#0052cc",
+					guilloche: "white",
+					text: "#1937a9",
+					textShadow: "white",
+					textPointer: "white",
+				},
 				'bbill_purple': {
 					publicUpper: "#fff57c",
 					publicLower: "#f7931a",
@@ -11948,27 +12017,27 @@ ninja.publicKey = {
 					textShadow: "white",
 					textPointer: "white",
 				},
-				'bbill_red': {
+				'bbill_orange': {
 					publicUpper: "#fff57c",
 					publicLower: "#f7931a",
-					privateLeft: "#e64d10",
-					privateRight: "#fff57c",
-					pointer: "#eb5523",
-					guilloche: "white",
-					text: "#1937a9",
-					textShadow: "white",
-					textPointer: "black",
-				},
-				'bbill_gray': {
-					publicUpper: "#fff57c",
-					publicLower: "#f7931a",
-					privateLeft: "#989c99",
-					privateRight: "#e6e6e6",
-					pointer: "#666666",
+					privateLeft: "#ff6600",
+					privateRight: "#fff67d",
+					pointer: "#cc5500",
 					guilloche: "white",
 					text: "#1937a9",
 					textShadow: "white",
 					textPointer: "white",
+				},
+				'bbill_red': {
+					publicUpper: "#fff57c",
+					publicLower: "#f7931a",
+					privateLeft: "#cc0000",
+					privateRight: "#fff57c",
+					pointer: "#aa0000",
+					guilloche: "white",
+					text: "#1937a9",
+					textShadow: "white",
+					textPointer: "black",
 				}
 			};
 			
@@ -13444,11 +13513,14 @@ ninja.publicKey = {
 
 function isDynamicDesign(whichDesign) {
 	switch(whichDesign) {
-		case 'default':
-		case 'bbill_blue':
-		case 'bbill_purple':
-		case 'bbill_red':
 		case 'bbill_gray':
+		case 'default':
+		case 'bbill_greenvivid':
+		case 'bbill_blue':
+		case 'bbill_bluevivid':
+		case 'bbill_purple':
+		case 'bbill_orange':
+		case 'bbill_red':
 			return true;
 		default:
 			return false;
@@ -13472,10 +13544,13 @@ function setDesign (whichDesign, isOnLoad, whichLanguage) {
 			withdraw: "PRIVATE KEY / WITHDRAW",
 			backLongTextFontSize: "12px",
 			backPaperWallet: "BITCOIN BILL",
-			backInst1: "Verify your balance by searching for the <b>public address</b> using a service such as mempool.space",
-			backInst2: "When you are ready to <strong>IMMEDIATELY TRANSFER</strong> from this bill to a bitcoin client, exchange, or online wallet: <strong>PEEL</strong> off all the security stickers & completely <strong>UNFOLD</strong> the bill to reveal the private key that will let you withdraw.",
-			backInst3: "When withdrawing your funds from this bill you should remove the <strong>ENTIRE BALANCE</strong>. If you attempt to withdraw only some of the funds you will likely lose the remaining bitcoins forever.",			
-			backInst4: "<strong>NEVER</strong> deposit additional funds to this bill.",
+			backInstructions: [
+				"Verify the balance by searching for the <b>public address</b> using a service such as mempool.space",
+				"When you are ready to <strong>IMMEDIATELY TRANSFER</strong> from this bill to your own wallet: <strong>PEEL</strong> off all the security stickers & completely <strong>UNFOLD</strong> the bill to reveal the private key that will let you withdraw.",
+				"When withdrawing from this bill, <strong>SWEEP</strong> the <strong>ENTIRE BALANCE</strong>. If you attempt to withdraw only some funds you will likely lose the remaining bitcoins forever.",
+				"<strong>NEVER</strong> deposit additional funds to this bill.",
+				"<strong>NOT</strong> legal tender: this bill is a <b>bitcoin paper wallet</b> not intended for circulation."
+			]
 		}
 	};
 	
@@ -13511,10 +13586,18 @@ function setDesign (whichDesign, isOnLoad, whichLanguage) {
 		document.getElementById('backText').style.display='block';
 		document.getElementById("backPaperWallet").innerHTML = translations[whichLanguage]['backPaperWallet'];
 		document.getElementById("backLongText").style.fontSize = translations[whichLanguage]['backLongTextFontSize'];
-		document.getElementById("backInst1").innerHTML = translations[whichLanguage]['backInst1'];
-		document.getElementById("backInst2").innerHTML = translations[whichLanguage]['backInst2'];
-		document.getElementById("backInst3").innerHTML = translations[whichLanguage]['backInst3'];
-		document.getElementById("backInst4").innerHTML = translations[whichLanguage]['backInst4'];
+		
+		// Render back instructions from array, skipping empty strings
+		var backInstructionsList = document.getElementById("backInstructionsList");
+		backInstructionsList.innerHTML = ''; // Clear existing items
+		var backInstructions = translations[whichLanguage]['backInstructions'] || [];
+		backInstructions.forEach(function(instruction) {
+			if (instruction && instruction.trim() !== '') {
+				var li = document.createElement('li');
+				li.innerHTML = instruction;
+				backInstructionsList.appendChild(li);
+			}
+		});
 	} else {
 		document.getElementById('backTextControl').style.display='none';
 		document.getElementById('backText').style.display='none';
