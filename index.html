@@ -12068,7 +12068,6 @@ ninja.publicKey = {
 				if ( isDynamicDesign(window.designChoice) ) document.getElementById("wallettype" + idPostFix).innerHTML = ''; // special designs should have this burned into the JPG
 				drawOpts.text['walletImportFormat'] = 'WALLET IMPORT FORMAT';
 			}
-			console.log("window.designChoice=" + window.designChoice + "; is that dynamic? " + isDynamicDesign(window.designChoice) );
 			if ( isDynamicDesign(window.designChoice) ) { // if we are not loading up a special JPG-based design, render the canvas
 				document.getElementById("papersvg1").src = PaperWallet.draw.frontImage(bitcoinAddress, drawOpts);
 			}
