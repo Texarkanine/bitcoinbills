@@ -10484,6 +10484,7 @@ Bitcoin.Util = {
 							<option value="bbill_purple">Bitcoin Bill - Purple</option>
 							<option value="bbill_orange">Bitcoin Bill - Orange</option>
 							<option value="bbill_red">Bitcoin Bill - Red</option>
+							<option value="bbill_usa">Bitcoin Bill - USA</option>
                             <option value="blackwhite">Black &amp; White Bitcoin</option>
                             <option value="holiday">Holiday / Christmas Bitcoin (English)</option>
                             <option value="custom">Your own custom Bitcoin design</option>
@@ -12038,6 +12039,17 @@ ninja.publicKey = {
 					text: "#1937a9",
 					textShadow: "white",
 					textPointer: "black",
+				},
+				'bbill_usa': {
+					publicUpper: "#fff57c",
+					publicLower: "#f7931a",
+					privateLeft: "#002868",
+					privateRight: "#ffffff",
+					pointer: "#bf0a30",
+					guilloche: "white",
+					text: "#1937a9",
+					textShadow: "white",
+					textPointer: "white",
 				}
 			};
 			
@@ -13520,6 +13532,7 @@ function isDynamicDesign(whichDesign) {
 		case 'bbill_purple':
 		case 'bbill_orange':
 		case 'bbill_red':
+		case 'bbill_usa':
 			return true;
 		default:
 			return false;
